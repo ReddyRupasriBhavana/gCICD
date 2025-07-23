@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+	<tls:context name="TLS_Context" doc:name="TLS Context" doc:id="e9b0d10b-7911-45e6-931d-1869d55c0747" />
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="d8fdebaa-5977-4955-a9f7-dd02a6863cc0" >
+		<http:listener-connection host="0.0.0.0" port="8081" tlsContext="TLS_Context" />
+	</http:listener-config>
+	<flow name="hellomuleFlow" doc:id="6999c488-a13f-4e40-b0f4-2ba6c01c64c1" >
+		<http:listener doc:name="Listener" doc:id="ab79d1ae-1c60-4128-becb-b289eac36639" config-ref="HTTP_Listener_config1" path="/"/>
+		<set-payload value="Hello Mule" doc:name="Set Payload" doc:id="bff723ae-994c-4239-8e84-51f18b2a66c0" />
+	</flow>
+</mule>
